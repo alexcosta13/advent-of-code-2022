@@ -9,29 +9,19 @@ def value(item):
 def basic(data):
     priorities = 0
     for bag in data:
-        comp1 = bag[:int(len(bag) / 2)]
-        comp2 = bag[int(len(bag) / 2):]
-        repeated = set()
-        for item in comp1:
-            if item in comp2:
-                repeated.add(item)
-        for item in repeated:
-            priorities += value(item)
+        item = (set(bag[:int(len(bag) / 2)]) & set(bag[int(len(bag) / 2):])).pop()
+        priorities += value(item)
     return priorities
 
 
 def advanced(data):
     result = 0
     for i in range(int(len(data) / 3)):
-        elf1 = data[i * 3]
-        elf2 = data[i * 3 + 1]
-        elf3 = data[i * 3 + 2]
-        badge = set()
-        for item in elf1:
-            if item in elf2 and item in elf3:
-                badge.add(item)
-        for item in badge:
-            result += value(item)
+        elf1 = set(data[i * 3])
+        elf2 = set(data[i * 3 + 1])
+        elf3 = set(data[i * 3 + 2])
+        badge = (elf1 & elf2 & elf3).pop()
+        result += value(badge)
     return result
 
 
