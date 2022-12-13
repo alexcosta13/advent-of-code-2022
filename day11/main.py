@@ -75,7 +75,7 @@ def play(data, rounds=20, advance=False):
 
 
 if __name__ == "__main__":
-    with open("example.txt" if EXAMPLE else "input.txt") as f:
+    with open("packets.py" if EXAMPLE else "pairs.py") as f:
         lines = f.read().strip()
     lines = [line for line in lines.split("\n\n")]
 
